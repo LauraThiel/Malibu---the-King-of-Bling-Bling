@@ -1,6 +1,7 @@
 let canvas = document.querySelector('canvas')
 let ctx = canvas.getContext('2d')
 canvas.style.border = '2px solid black'
+
 let intervalID = 0
 let score = 0
 let backImg = document.createElement('img')
@@ -35,6 +36,15 @@ let houseY = 275
 
 
 let startBtn = document.querySelector('#start')
+let welcome = document.querySelector('#welcome')
+let ballcollision = document.querySelector('#ballcollision')
+let fencecollision = document.querySelector('#fencecollision')
+let home = document.querySelector('#home')
+
+canvas.style.display = 'none'
+ballcollision.style.display = 'none'
+fencecollision.style.display = 'none'
+home.style.display = 'none'
 
 
 document.addEventListener("keydown", event => {
@@ -147,7 +157,7 @@ function runningBalls () {
         (dogY + dogImg.height > balls[i].y && dogY < balls[i].y + ballImg.height))
         {
             clearInterval(intervalID);
-            gameOver()
+            gameOver2()
         }
     }
     if (balls[balls.length-1].x <500) {
@@ -176,10 +186,29 @@ function gettingHome(){
 
 function gameOver(){
     canvas.style.display = 'none'
+    startBtn.style.display = 'none'
+    welcome.style.display = 'none'
+    ballcollision.style.display = 'none'
+    fencecollision.style.display = ''
+    home.style.display = 'none'
+}
+
+function gameOver2(){
+    canvas.style.display = 'none'
+    startBtn.style.display = 'none'
+    welcome.style.display = 'none'
+    ballcollision.style.display = ''
+    fencecollision.style.display = 'none'
+    home.style.display = 'none'
 }
 
 function gameWon(){
     canvas.style.display = 'none'
+    startBtn.style.display = 'none'
+    welcome.style.display = 'none'
+    ballcollision.style.display = 'none'
+    fencecollision.style.display = 'none'
+    home.style.display = ''
 }
 
 function startGame(){
@@ -197,10 +226,20 @@ function startGame(){
 function startGame(){
     canvas.style.display = 'block'
     startBtn.style.display = 'none'
+    welcome.style.display = 'none'
+    ballcollision.style.display = 'none'
+    fencecollision.style.display = 'none'
+    home.style.display = 'none'
+
     intervalID = setInterval(() => {
         requestAnimationFrame(draw)
-    }, 400)
+    }, 200)
 }
+
+
+startBtn.addEventListener('click', () => {
+    startGame()
+})
 
 
 //window.addEventListener('load', () => {
@@ -208,7 +247,3 @@ function startGame(){
 //        requestAnimationFrame(draw)
 //     }, 400)
 //})
-
-startBtn.addEventListener('click', () => {
-    startGame()
-})

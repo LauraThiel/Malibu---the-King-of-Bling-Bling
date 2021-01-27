@@ -4,8 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Malibu - King of Bling Bling</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+    <div id="welcome">
+        <h1>Malibu's Journey</h1>
+        <h3>Rules:</h3>
+        <ul>
+            <li>Use the space bar to jump.</li>
+            <li>Avoid hitting the fences as they will knock you out.</li>
+            <li>Collect the flying treats to recharge and gain points.</li>
+            <li>Don't get destracted by the balls - there is no time to play :)</li>
+            <li>Did you reach your house? Well done, you are home!</li>
+        </ul>
+
+        <form> 
+            <label for="fname">Enter your name:</label><br>
+            <input type="text" id="fname" name="fname"><br>  
+            <input type="submit">
+        </form> 
+    </div>
+
+    <div id="ballcollision">
+        <h3> No time to play!</h3>
+    </div>
+    <div id="fencecollision">
+        <h3> Ouch! You are k.o.!</h3>
+    </div>
+    <div id="home">
+        <h3> Yay! You are home!</h3>
+    </div>
+
+
     <button id="start">Start Game</button>
     <canvas id="Canvas" width="1000" height="520"></canvas>
     <script src="game.js"></script>
