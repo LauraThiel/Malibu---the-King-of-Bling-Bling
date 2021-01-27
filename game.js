@@ -19,7 +19,7 @@ let houseImg = document.createElement('img')
 houseImg.src = '/images/house.png'
 let grass =[{x: 0, y: 450}, {x: 500, y: 450}]
 let fences =[{x: -200, y: 400}]
-let treats =[{x: 400, y: 200}]
+let treats =[{x: 400, y: 300}]
 let balls =[{x: -200, y: 150}]
 let fenceX = 800
 let ballX = 1200
@@ -118,8 +118,12 @@ function runningTreats () {
         ctx.drawImage(treatImg, treats[i].x, treats[i].y)
         treats[i].x -= 20
         //Collision dog and treats
-        if((dogX + dogImg.width < treats[i].x + treatImg.width && dogX > treats[i].x ) &&
-         (dogY + dogImg.height > treats[i].y  && dogY < treats[i].y + treatImg.height)){
+        console.log()
+        if
+        ((dogX + dogImg.width > treats[i].x  && dogX < treats[i].x + treatImg.width) 
+        &&
+        (dogY + dogImg.height > treats[i].y  && dogY < treats[i].y + treatImg.height))
+        {
             treats.splice(i, 1);
             i--
             score ++
@@ -130,17 +134,18 @@ function runningTreats () {
             x: canvas.width + 30,
             y: Math.floor(Math.random() * canvas.height - 300)
         })
-    }    
-
-}
+    } 
+}   
 
 function runningBalls () {
     for(let i=0; i< balls.length; i++){
         ctx.drawImage(ballImg, balls[i].x, balls[i].y)
         balls[i].x -= 20
         //Collision dog and ball
-        if((dogX + dogImg.width < balls[i].x + ballImg.width && dogX > balls[i].x ) && 
-        (dogY + dogImg.height > balls[i].y  && dogY < balls[i].y + ballImg.height)){
+        if((dogX + dogImg.width > balls[i].x && dogX < balls[i].x + ballImg.width) 
+        && 
+        (dogY + dogImg.height > balls[i].y && dogY < balls[i].y + ballImg.height))
+        {
             clearInterval(intervalID);
             gameOver()
         }
