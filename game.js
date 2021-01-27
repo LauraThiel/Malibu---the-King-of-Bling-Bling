@@ -1,7 +1,6 @@
 let canvas = document.querySelector('canvas')
 let ctx = canvas.getContext('2d')
 canvas.style.border = '2px solid black'
-
 let intervalID = 0
 let score = 0
 let backImg = document.createElement('img')
@@ -36,6 +35,7 @@ let houseY = 275
 
 
 let startBtn = document.querySelector('#start')
+let restartBtn = document.querySelector('#restart')
 let welcome = document.querySelector('#welcome')
 let ballcollision = document.querySelector('#ballcollision')
 let fencecollision = document.querySelector('#fencecollision')
@@ -45,6 +45,7 @@ canvas.style.display = 'none'
 ballcollision.style.display = 'none'
 fencecollision.style.display = 'none'
 home.style.display = 'none'
+restartBtn.style.display = 'none'
 
 
 document.addEventListener("keydown", event => {
@@ -187,6 +188,7 @@ function gettingHome(){
 function gameOver(){
     canvas.style.display = 'none'
     startBtn.style.display = 'none'
+    restartBtn.style.display = ''
     welcome.style.display = 'none'
     ballcollision.style.display = 'none'
     fencecollision.style.display = ''
@@ -196,6 +198,7 @@ function gameOver(){
 function gameOver2(){
     canvas.style.display = 'none'
     startBtn.style.display = 'none'
+    restartBtn.style.display = ''
     welcome.style.display = 'none'
     ballcollision.style.display = ''
     fencecollision.style.display = 'none'
@@ -205,19 +208,21 @@ function gameOver2(){
 function gameWon(){
     canvas.style.display = 'none'
     startBtn.style.display = 'none'
+    restartBtn.style.display = ''
     welcome.style.display = 'none'
     ballcollision.style.display = 'none'
     fencecollision.style.display = 'none'
     home.style.display = ''
 }
 
-function startGame(){
-    canvas.style.display = 'block'
-    startBtn.style.display = 'none'
-    intervalID = setInterval(() => {
-        requestAnimationFrame(draw)
-    }, 100)
-}
+//function startGame(){
+//    canvas.style.display = 'block'
+//    startBtn.style.display = 'none'
+//    restartBtn.style.display = 'none'
+//    intervalID = setInterval(() => {
+//        requestAnimationFrame(draw)
+//    }, 100)
+//}
 
 
 // create interval here
@@ -226,6 +231,7 @@ function startGame(){
 function startGame(){
     canvas.style.display = 'block'
     startBtn.style.display = 'none'
+    restartBtn.style.display = 'none'
     welcome.style.display = 'none'
     ballcollision.style.display = 'none'
     fencecollision.style.display = 'none'
@@ -239,6 +245,10 @@ function startGame(){
 
 startBtn.addEventListener('click', () => {
     startGame()
+})
+
+restartBtn.addEventListener('click', () => {
+    location.reload();
 })
 
 
