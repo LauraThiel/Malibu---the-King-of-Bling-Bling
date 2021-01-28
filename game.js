@@ -16,7 +16,7 @@ let dogImg = document.createElement('img')
 dogImg.src = './images/dog2.png'
 let houseImg = document.createElement('img')
 houseImg.src = './images/house.png'
-let grass =[{x: 0, y: 450}, {x: 500, y: 450}]
+let grass =[{x: 0, y: 450}, {x: 500, y: 450}, {x: 700, y: 450}]
 let fences =[{x: -200, y: 400}]
 let treats =[{x: 400, y: 300}]
 let balls =[{x: -200, y: 150}]
@@ -43,6 +43,7 @@ let home = document.querySelector('#home')
 let song = document.querySelector('#sound')
 let howl = document.querySelector('#howl')
 let crunch = document.querySelector('#crunch')
+let whistle = document.querySelector('#whistle')
 
 canvas.style.display = 'none'
 ballcollision.style.display = 'none'
@@ -53,13 +54,13 @@ restartBtn.style.display = 'none'
 
 document.addEventListener("keydown", event => {
     if (event.keyCode == 32 || event.key == " ") {
-        dogIncrement -= 15
+        dogIncrement -= 30
     }
 } )
 
 document.addEventListener("keyup", event => {
     if (event.keyCode == 32 || event.key == " ") {
-        dogIncrement = 15
+        dogIncrement = 20
     }
 })
 
@@ -172,10 +173,11 @@ function runningBalls () {
 }
 
 function dogOnGrass (){
-    if (dogY + dogArea <canvas.height - 70) {
-        dogIncrement = 5
+    if (dogY + dogArea <canvas.height - 100 ) {
+        dogIncrement = 30
     }
     else dogIncrement = 0
+
 }
 
 function gettingHome(){
@@ -254,6 +256,7 @@ function startGame(){
 
 startBtn.addEventListener('click', () => {
     startGame()
+    whistle.play()
 })
 
 restartBtn.addEventListener('click', () => {

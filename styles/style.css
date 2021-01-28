@@ -2,6 +2,7 @@ body {
     background-color: #ade1f7;
     font-family: 'Schoolbell', cursive;
     color: #1f2a3d;
+
   }
 
   .box {
@@ -14,3 +15,29 @@ body {
     width: 1000px;
     height: 1000px;
   }
+
+button {
+    background-color: #1f2a3d;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Schoolbell', cursive;
+    border-radius: 12px;
+  }
+
+#submit{
+    background: #0066A2;
+    color: white;
+    border-style: outset;
+    border-color: #0066A2;
+    height: 50px;
+    width: 100px;
+    font: bold 15px arial, sans-serif;
+    text-shadow:none;
+    }
+
+
