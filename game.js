@@ -8,13 +8,13 @@ backImg.src = './images/background.png'
 let fgImg = document.createElement('img')
 fgImg.src = './images/grass.png'
 let treatImg = document.createElement('img')
-treatImg.src = './images/dogtreat.jpg'
+treatImg.src = './images/dogtreat.png'
 let fenceImg = document.createElement('img')
 fenceImg.src = './images/fence.png'
 let ballImg = document.createElement('img')
 ballImg.src = './images/ball.png'
 let dogImg = document.createElement('img')
-dogImg.src = './images/ball.jpg'
+dogImg.src = './images/dog2.png'
 let houseImg = document.createElement('img')
 houseImg.src = './images/house.png'
 let grass =[{x: 0, y: 450}, {x: 500, y: 450}]
@@ -26,11 +26,11 @@ let ballX = 1200
 let treatX = 1100
 let fgX = 0
 let fg2X = 500
-let dogY = 440
+let dogY = 400
 let dogX = 150
 let dogIncrement = 5  
 let dogArea = 50
-let houseX = 2000
+let houseX = 9000
 let houseY = 275
 
 
@@ -50,13 +50,13 @@ restartBtn.style.display = 'none'
 
 document.addEventListener("keydown", event => {
     if (event.keyCode == 32 || event.key == " ") {
-        dogIncrement -= 5
+        dogIncrement -= 15
     }
 } )
 
 document.addEventListener("keyup", event => {
     if (event.keyCode == 32 || event.key == " ") {
-        dogIncrement = 5
+        dogIncrement = 15
     }
 })
 
@@ -74,10 +74,10 @@ function draw(){
     fg2X -= 20
     dogY += dogIncrement
     houseX -= 20
-    runningFences()
-    runningGrass()
     runningTreats()
     runningBalls()
+    runningFences()
+    runningGrass()
     dogOnGrass()
     gettingHome()
 
@@ -114,9 +114,9 @@ function runningFences () {
             gameOver()
         }
     }
-    if (fences[fences.length-1].x <600) {
+    if (fences[fences.length-1].x <200) {
         fences.push({
-            x: Math.floor(Math.random() * canvas.width + 500),
+            x: Math.floor(Math.random() * canvas.width + 600),
             y: 420
         })
     }    
@@ -140,10 +140,10 @@ function runningTreats () {
             score ++
         }     
     }
-    if (treats[treats.length-1].x <900) {
+    if (treats[treats.length-1].x <800) {
         treats.push({
             x: canvas.width + 30,
-            y: Math.floor(Math.random() * canvas.height - 300)
+            y: Math.floor(Math.random() * canvas.height)
         })
     } 
 }   
@@ -161,17 +161,17 @@ function runningBalls () {
             gameOver2()
         }
     }
-    if (balls[balls.length-1].x <500) {
+    if (balls[balls.length-1].x <100) {
         balls.push({
             x: canvas.width + 30,
-            y: Math.floor(Math.random() * canvas.height - 200)
+            y: Math.floor(Math.random() * canvas.height)
         })
     }    
 
 }
 
 function dogOnGrass (){
-    if (dogY + dogArea <canvas.height - 30) {
+    if (dogY + dogArea <canvas.height - 70) {
         dogIncrement = 5
     }
     else dogIncrement = 0
@@ -239,7 +239,7 @@ function startGame(){
 
     intervalID = setInterval(() => {
         requestAnimationFrame(draw)
-    }, 200)
+    }, 100)
 }
 
 
