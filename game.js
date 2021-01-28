@@ -1,6 +1,5 @@
 let canvas = document.querySelector('canvas')
 let ctx = canvas.getContext('2d')
-canvas.style.border = '2px solid black'
 let intervalID = 0
 let score = 0
 let backImg = document.createElement('img')
@@ -40,6 +39,10 @@ let welcome = document.querySelector('#welcome')
 let ballcollision = document.querySelector('#ballcollision')
 let fencecollision = document.querySelector('#fencecollision')
 let home = document.querySelector('#home')
+//let finalscore = document.querySelector('#score')
+let song = document.querySelector('#sound')
+let howl = document.querySelector('#howl')
+let crunch = document.querySelector('#crunch')
 
 canvas.style.display = 'none'
 ballcollision.style.display = 'none'
@@ -94,9 +97,6 @@ function runningGrass () {
             y: 450
         })
     }    
- //    if (grass[grass[0]].x <-500) {
- //       grass.remove(grass[0])         //NEEDS TO BE CHECKED AND ADDED TO THE OTHER FUNCTIONS
- //   }
 }
 
 
@@ -108,7 +108,7 @@ function runningFences () {
         ctx.drawImage(fenceImg, fences[i].x, fences[i].y)
         fences[i].x -= 20
         //Collision dog and fence
-        if((dogX + dogImg.width < fences[i].x + fenceImg.width && dogX > fences[i].x ) &&
+        if((dogX + dogImg.width > fences[i].x && dogX < fences[i].x + fenceImg.width ) &&
          (dogY + dogImg.height > fences[i].y  && dogY < fences[i].y + fenceImg.height)){
             clearInterval(intervalID);
             gameOver()
@@ -138,6 +138,7 @@ function runningTreats () {
             treats.splice(i, 1);
             i--
             score ++
+            crunch.play()
         }     
     }
     if (treats[treats.length-1].x <800) {
@@ -193,6 +194,8 @@ function gameOver(){
     ballcollision.style.display = 'none'
     fencecollision.style.display = ''
     home.style.display = 'none'
+    howl.play()
+    song.pause()
 }
 
 function gameOver2(){
@@ -203,6 +206,8 @@ function gameOver2(){
     ballcollision.style.display = ''
     fencecollision.style.display = 'none'
     home.style.display = 'none'
+    howl.play()
+    song.pause()
 }
 
 function gameWon(){
@@ -213,6 +218,7 @@ function gameWon(){
     ballcollision.style.display = 'none'
     fencecollision.style.display = 'none'
     home.style.display = ''
+    //finalscore.insertAdjacentHTML(1, score) = ''
 }
 
 //function startGame(){
@@ -236,11 +242,14 @@ function startGame(){
     ballcollision.style.display = 'none'
     fencecollision.style.display = 'none'
     home.style.display = 'none'
+    song.play()
 
     intervalID = setInterval(() => {
         requestAnimationFrame(draw)
     }, 100)
 }
+
+
 
 
 startBtn.addEventListener('click', () => {
@@ -257,3 +266,5 @@ restartBtn.addEventListener('click', () => {
 //        requestAnimationFrame(draw)
 //     }, 400)
 //})
+
+

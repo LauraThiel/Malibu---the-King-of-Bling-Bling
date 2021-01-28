@@ -3,48 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malibu - King of Bling Bling</title>
+    <title>Malibu's way home</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <div id="welcome">
-        <h1>Malibu's Journey</h1>
-        <h3>Rules:</h3>
-        <ul>
-            <li>Use the space bar to jump.</li>
-            <li>Avoid hitting the fences as they will knock you out.</li>
-            <li>Collect the flying treats to recharge and gain points.</li>
-            <li>Don't get destracted by the balls - there is no time to play :)</li>
-            <li>Did you reach your house? Well done, you are home!</li>
-        </ul>
+    <div class="box", style="text-align: center">
 
-        <form> 
-            <label for="fname">Enter your name:</label><br>
-            <input type="text" id="fname" name="fname"><br>  
-            <input type="submit">
-        </form> 
-        <p>
-            <button id="start">Start Game</button>
-        </p>
-        <img src="./images/welcomedog.png" alt="Hello Dog">
-    </div>
+        <div id="welcome">
+            <h1>Malibu's way home</h1>
+            <h3>Rules:</h3>
+            <p>
+            <ul style="text-align: center">
+                <li>Use the space bar to jump.</li>
+                <li>Avoid hitting the fences as they will knock you out.</li>
+                <li>Collect the flying treats to recharge and gain points.</li>
+                <li>Don't get destracted by the balls - there is no time to play :)</li>
+                <li>Did you reach your house? Well done, you are home!</li>
+            </ul>
+            </p>
 
-    <div id="ballcollision">
-        <h3> No time to play!</h3>
-        <img src="./images/doglost.png" alt="Hello Dog">
+            <p>
+            <form> 
+                <label for="fname">Enter your name:</label><br>
+                <input type="text" id="fname" name="fname"><br>  
+                <input type="submit">
+            </form> 
+            </p>
+            <p>
+                <button id="start">Start Game</button>
+            </p>
+            <img src="./images/welcomedog.png" alt="Hello Dog">
+        </div>
+
+        <div id="ballcollision">
+            <h1> No time to play!</h1>
+            <img src="./images/doglost.png" alt="Hello Dog">
+        </div>
+        <div id="fencecollision">
+            <h1> Ouch! You are k.o.!</h1>
+            <img src="./images/doglost.png" alt="Hello Dog">
+        </div>
+        <div id="home">
+            <h3> Yay! You are home!</h3>
+            <p id="score">Your score is: </p>
+            <img src="./images/homedog.png" alt="Hello Dog">
+        </div>
+        
+
+        <audio src="./sounds/aintnomountain.mp3" id="sound"></audio>
+        <audio src="./sounds/howl.mp3" id="howl"></audio>
+        <audio src="./sounds/crunch.mp3" id="crunch"></audio>
+        <button id="restart">Go to start</button>
+        <canvas id="Canvas" width="1000" height="520"></canvas>
+        <script src="game.js"></script>
     </div>
-    <div id="fencecollision">
-        <h3> Ouch! You are k.o.!</h3>
-        <img src="./images/doglost.png" alt="Hello Dog">
-    </div>
-    <div id="home">
-        <h3> Yay! You are home!</h3>
-        <p>Your score is: </p>
-        <img src="./images/homedog.png" alt="Hello Dog">
-    </div>
-    
-    <button id="restart">Go to start</button>
-    <canvas id="Canvas" width="1000" height="520"></canvas>
-    <script src="game.js"></script>
 </body>
 </html>
