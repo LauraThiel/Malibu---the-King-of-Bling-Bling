@@ -21,7 +21,7 @@ let fences =[{x: -200, y: 400}]
 let treats =[{x: 400, y: 300}]
 let balls =[{x: -200, y: 150}]
 let fenceX = 800
-let ballX = 1200
+//let ballX = 1400
 let treatX = 1100
 let fgX = 0
 let fg2X = 500
@@ -29,7 +29,7 @@ let dogY = 400
 let dogX = 150
 let dogIncrement = 5  
 let dogArea = 50
-let houseX = 9000
+let houseX = 6000
 let houseY = 275
 
 
@@ -39,11 +39,13 @@ let welcome = document.querySelector('#welcome')
 let ballcollision = document.querySelector('#ballcollision')
 let fencecollision = document.querySelector('#fencecollision')
 let home = document.querySelector('#home')
-//let finalscore = document.querySelector('#score')
+let finalscore = document.querySelector('#score')
 let song = document.querySelector('#sound')
 let howl = document.querySelector('#howl')
 let crunch = document.querySelector('#crunch')
 let whistle = document.querySelector('#whistle')
+let nameplayer = document.querySelector('#fname')
+let nameToDisplay = ""
 
 canvas.style.display = 'none'
 ballcollision.style.display = 'none'
@@ -54,7 +56,7 @@ restartBtn.style.display = 'none'
 
 document.addEventListener("keydown", event => {
     if (event.keyCode == 32 || event.key == " ") {
-        dogIncrement -= 30
+        dogIncrement -= 40
     }
 } )
 
@@ -71,11 +73,7 @@ function draw(){
     ctx.drawImage(houseImg, houseX, houseY)
     ctx.font = '20px Verdana'
     ctx.fillText('Score: ' + score, 10, 30)
-    fenceX -= 20
-    ballX -= 20
-    treatX -= 20
     fgX -= 20
-    fg2X -= 20
     dogY += dogIncrement
     houseX -= 20
     runningTreats()
@@ -101,16 +99,14 @@ function runningGrass () {
 }
 
 
-
-
-
 function runningFences () {
     for(let i=0; i< fences.length; i++){
         ctx.drawImage(fenceImg, fences[i].x, fences[i].y)
         fences[i].x -= 20
         //Collision dog and fence
-        if((dogX + dogImg.width > fences[i].x && dogX < fences[i].x + fenceImg.width ) &&
-         (dogY + dogImg.height > fences[i].y  && dogY < fences[i].y + fenceImg.height)){
+
+        if((dogX + (dogImg.width - 60) > fences[i].x && dogX < fences[i].x + fenceImg.width - 60 ) &&
+         (dogY + (dogImg.height - 60) > fences[i].y  && dogY < fences[i].y + fenceImg.height - 60)){
             clearInterval(intervalID);
             gameOver()
         }
@@ -130,11 +126,10 @@ function runningTreats () {
         ctx.drawImage(treatImg, treats[i].x, treats[i].y)
         treats[i].x -= 20
         //Collision dog and treats
-        console.log()
         if
-        ((dogX + dogImg.width > treats[i].x  && dogX < treats[i].x + treatImg.width) 
+        ((dogX + dogImg.width - 20 > treats[i].x  && dogX < treats[i].x + treatImg.width) 
         &&
-        (dogY + dogImg.height > treats[i].y  && dogY < treats[i].y + treatImg.height))
+        (dogY + dogImg.height - 20 > treats[i].y  && dogY < treats[i].y + treatImg.height))
         {
             treats.splice(i, 1);
             i--
@@ -153,19 +148,20 @@ function runningTreats () {
 function runningBalls () {
     for(let i=0; i< balls.length; i++){
         ctx.drawImage(ballImg, balls[i].x, balls[i].y)
-        balls[i].x -= 20
+        balls[i].x -= 50
         //Collision dog and ball
-        if((dogX + dogImg.width > balls[i].x && dogX < balls[i].x + ballImg.width) 
+        console.log(ballImg.height)
+        if((dogX + dogImg.width - 80> balls[i].x && dogX < balls[i].x + ballImg.width - 10) 
         && 
-        (dogY + dogImg.height > balls[i].y && dogY < balls[i].y + ballImg.height))
+        (dogY + dogImg.height - 80> balls[i].y && dogY < balls[i].y + ballImg.height - 10))
         {
             clearInterval(intervalID);
             gameOver2()
         }
     }
-    if (balls[balls.length-1].x <100) {
+    if (balls[balls.length-1].x <10) {
         balls.push({
-            x: canvas.width + 30,
+            x: canvas.width + 800,
             y: Math.floor(Math.random() * canvas.height)
         })
     }    
@@ -220,7 +216,7 @@ function gameWon(){
     ballcollision.style.display = 'none'
     fencecollision.style.display = 'none'
     home.style.display = ''
-    //finalscore.insertAdjacentHTML(1, score) = ''
+    finalscore.innerText = `${nameToDisplay}, your score is: ${score}`
 }
 
 //function startGame(){
@@ -245,10 +241,11 @@ function startGame(){
     fencecollision.style.display = 'none'
     home.style.display = 'none'
     song.play()
+    nameToDisplay = nameplayer.value
 
     intervalID = setInterval(() => {
         requestAnimationFrame(draw)
-    }, 100)
+    }, 80)
 }
 
 

@@ -4,6 +4,9 @@ body {
     color: #1f2a3d;
 
   }
+ul {
+  list-style-type: none;
+}
 
   .box {
     display: flex;
@@ -29,15 +32,5 @@ button {
     border-radius: 12px;
   }
 
-#submit{
-    background: #0066A2;
-    color: white;
-    border-style: outset;
-    border-color: #0066A2;
-    height: 50px;
-    width: 100px;
-    font: bold 15px arial, sans-serif;
-    text-shadow:none;
-    }
 
 
